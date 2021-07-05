@@ -1,0 +1,264 @@
+﻿
+Ficj
+Fuck you 
+Shit 
+Xxx
+Gi
+Go 
+You go 
+Sheet
+
+Detect IE Version = 9, number = 9 
+DirectDraw: create surface ok
+DirectDraw: create surface ok
+DirectSound: create buffer ok
+Detect IE Version = 9, number = 9 
+DirectDraw: create surface ok
+DirectDraw: create surface ok
+DirectSound: create buffer ok
+  if (!Init_FFM_Buf())
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+
+
+
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process used!=DSB8_NOTIFY_SIZE 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Stop playing, &&&&&&&&&&&&&&&&&&&& play pos 147058 > current pos 129280 ,  diff 17778
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
+CAudioCtx::Process Audio start to play ~~~~~~~~~~~~ 
