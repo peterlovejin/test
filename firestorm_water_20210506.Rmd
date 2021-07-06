@@ -1,0 +1,564 @@
+---
+title: "firestorm_water_20210506"
+author: "Peter Lin"
+date: "2021/5/6"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r echo=F,error=F,warning=F,message=F,fig.width=10,fig.height=7}
+
+library(knitr)
+ 
+library(kableExtra)
+library(lubridate)
+library(hms)
+library(stringr)
+library(DT)
+library(dplyr)
+library(tidyverse)
+library(XML)
+library(rvest)
+library(ggthemes)
+
+log=dir("F:IACT/D/2021/iseego/mp/2021",pattern=".log",recursive=T,full.names=T)
+
+n=length(log)
+
+ 
+
+
+logdf=NULL
+mytmp=NULL
+
+for (i in 1:n){
+
+tryCatch({
+t1=read.table(log[i],sep="\t",header=F)
+
+
+
+library(stringr) 
+
+
+mym=table(t1$V3)%>%matrix %>%t()  
+
+mydf=mym %>% data.frame()
+names(mydf)=table(t1$V3) %>% names() %>% str_extract("[A-Za-z]+")
+ 
+mydf$date=str_extract(log[i],"2021-0[0-9-]+")
+
+ 
+mydf$sn= ifelse(is.na(str_extract(log[i],"[A-Z0-9a-z-]{14}")),"xxxxxxxxxxxxxx",str_extract(log[i],"[A-Z0-9a-z-]{14}"))
+
+mydf$bu=str_extract(c(na.omit(str_extract(t1,"IMEI \\[BU[0-9A-Z\\]]+"))),"BU[0-9A-Z]+")
+ 
+
+
+
+mydf$log=str_extract(log[i],"[0-9]+_F")
+ 
+
+mydf$time=str_extract(log[i],"[0-9]{6}_[0-9]{6}_[0-9]+")
+ 
+ 
+
+mydf$sw_v_e=str_extract(str_remove_all(t1[nrow(t1),]$V4,"="),"v[0-9._]+")
+
+
+#mydf$test_e=str_extract(str_remove_all(t1[nrow(t1),]$V4,"="),"[_A-Z ]+$")
+#mydf$name_e=str_extract(str_remove_all(t1[nrow(t1),]$V4,"="),"^Firestorm_[A-Z a-z()]+")
+
+ 
+t1[str_detect(t1,"FL")]
+ 
+keep_5_v=as.numeric(str_extract(na.omit(str_extract(t1$V4,"check_pressure_value_5s=\\[-[0-9.]+")),"-[0-9]+"))
+  
+ 
+
+ keep_5_r=as.numeric(str_extract(na.omit(str_extract(t1$V4,"5s=\\[-[0-9]+\\], reference_pressure_value=\\[-[0-9.]+")),"-[0-9]+$"))
+ 
+ 
+ 
+ keep_5_pct=as.numeric(str_extract(na.omit(str_extract(t1$V4,"current_air_leakage_5s=\\[[0-9.]+")),"[0-9]+.[0-9]+"))
+ 
+
+keep_60_v=as.numeric(str_extract(na.omit(str_extract(t1$V4,"check_pressure_value_60s=\\[-[0-9.]+")),"-[0-9]+"))
+
+ 
+
+ keep_60_r=as.numeric(str_extract(na.omit(str_extract(t1$V4,"60s=\\[-[0-9]+\\], reference_pressure_value=\\[-[0-9.]+")),"-[0-9]+$"))
+
+ 
+ 
+ keep_60_pct=as.numeric(str_extract(na.omit(str_extract(t1$V4,"current_air_leakage_60s=\\[[0-9.]+")),"[0-9]+.[0-9]+"))
+
+ 
+
+
+mydf$keep_5_r=ifelse(length(keep_5_r)==0,999,keep_5_r)
+ 
+mydf$keep_5_v=ifelse(length(keep_5_v)==0,999,keep_5_v)
+ 
+mydf$keep_5_pct=ifelse(length(keep_5_pct)==0,999,keep_5_pct)
+ 
+
+mydf$keep_60_r=ifelse(length(keep_60_r)==0,999,keep_60_r)
+ 
+mydf$keep_60_v=ifelse(length(keep_60_v)==0,999,keep_60_v)
+ 
+mydf$keep_60_pct=ifelse(length(keep_60_pct)==0,999,keep_60_pct)
+ 
+
+ 
+
+mydf$sw_v_b=str_extract(str_remove_all(t1[1,]$V4,"="),"v[0-9._]+")
+mydf$test_b=str_extract(str_remove_all(t1[1,]$V4,"="),"[_A-Z ]+$")
+mydf$name_b=str_extract(str_remove_all(t1[1,]$V4,"="),"^Firestorm_[A-Z a-z()]+")
+
+ 
+mydf$start_t=ymd_hms(paste(t1[1,]$V1,str_sub(t1[1,]$V2,1,8)))
+mydf$end_t=ymd_hms(paste(t1[nrow(t1),]$V1,str_sub(t1[nrow(t1),]$V2,1,8)))
+mydf$duration=mydf$end_t-mydf$start_t
+
+
+
+print("----------------------")
+print(i)
+print(log[i])
+
+
+ 
+
+ 
+
+mydf$pressure.5.all=c(na.omit(str_extract(t1,"5s\\(-[0-9]+--[0-9]+\\) [\\[0-9.%\\] <=>A-Z>\\]+ |<>A-Z]+")))
+
+mydf$pressure.5.p=str_extract(c(na.omit(str_extract(t1,"5s\\(-[0-9]+--[0-9]+\\) [\\[0-9.%\\] <=>A-Z>\\]+ |<>A-Z]+"))),"[0-9.]+%{1}")
+
+mydf$pressure.5.result=str_extract(c(na.omit(str_extract(t1,"5s\\(-[0-9]+--[0-9]+\\) [\\[0-9.%\\] <=>A-Z>\\]+ |<>A-Z]+"))),"[A-Za-z]+$")
+ 
+
+print(mydf$pressure.5.all)
+
+
+mydf$pressure.60.all=unlist(c(na.omit(str_extract(t1,"60s\\(-[0-9]+--[0-9]+\\) [\\[0-9.%\\] <=>A-Z>\\]+ |<>A-Z]+"))))
+
+mydf$pressure.60.p=unlist(str_extract(c(na.omit(str_extract(t1,"60s\\(-[0-9]+--[0-9]+\\) [\\[0-9.%\\] <=>A-Z>\\]+ |<>A-Z]+"))),"[0-9.]+%{1}"))
+
+mydf$pressure.60.result=str_extract(c(na.omit(str_extract(t1,"60s\\(-[0-9]+--[0-9]+\\) [\\[0-9.%\\] <=>A-Z>\\]+ |<>A-Z]+"))),"[A-Za-z]+$")
+
+print(mydf$pressure.60.all)
+
+
+
+logdf=bind_rows(logdf,mydf)
+
+
+}, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})} 
+
+
+
+ logdf$online=str_extract(logdf$test_b,"[A-Z]+LINE") 
+ 
+
+s_logdf= logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS") %>% distinct(sn,.keep_all = T) %>% group_by(date) %>% summarise(n=n()) %>% filter(date>=as.Date("2021-05-1"))
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01")) %>% distinct(sn,.keep_all = T) %>%datatable()
+
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01")) %>% arrange(sn)%>%datatable(options = list(pageLength=300,columnDefs = list(list(className = 'dt-center', targets = 0:27)))) 
+
+s_logdf %>% datatable()
+
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01"),online=="ONLINE") %>% group_by(date,online) %>% summarise(n=n())%>%ungroup() %>%mutate(cum_n=cumsum(n)) %>% kable(caption="Firestorm water online test result",align="c")
+
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01"),online=="ONLINE") %>% group_by(date,online) %>% summarise(n=n())%>%ungroup() %>%mutate(cum_n=cumsum(n)) %>% kable(caption="Firestorm water online test result",align="c") %>% column_spec(1:3,width="3 cm") 
+
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01"),online=="ONLINE") %>% group_by(date,online) %>% summarise(n=n())%>%ungroup() %>%mutate(cum_n=cumsum(n)) %>% kable(caption="Firestorm water online test result",align="c") %>% column_spec(1:3,width="3 cm") %>% kable_classic(full_width=F,c("striped","hover"),font_size=20)
+
+
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01"),online=="ONLINE") %>% group_by(date,online) %>% summarise(n=n())%>%ungroup() %>%mutate(cum_n=cumsum(n)) %>% kable(caption="Firestorm water online test result",align="c")  %>% kable_classic(full_width=F,c("striped","hover"),font_size=20)
+
+
+
+online_sn=logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01"),online=="ONLINE") %>% pull(sn)
+
+
+
+all_sn=logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01")) %>% pull(sn) %>% unique()
+
+
+
+logdf %>% filter(pressure.5.result=="PASS",pressure.60.result=="PASS",date>=as.Date("2021-05-01")) %>% arrange(sn) %>% group_by(sn) %>% mutate(cum_n=cumsum(n())) %>% select(date,sn,pressure.5.all,pressure.60.all,online,cum_n,end_t) %>%arrange(sn,end_t) %>% datatable(caption="Firestorm water test pass æ¬¡æ•¸çµ±è??",options=list(pageLength=200))
+
+ 
+print("online å°‘ä?†ä?€?€‹sn")
+all_sn[!(all_sn %in% online_sn)] %>% kable(caption="online å°‘ä?†ä?€?€‹sn")
+
+
+```
+
+
+```{r echo=F,error=F,warning=F,message=F,fig.width=10,fig.height=7,eval=F}
+
+#  
+#  
+# logdf$keep_5_pct=as.numeric(logdf$keep_5_pct)
+# logdf$keep_5_r=as.numeric(logdf$keep_5_r)
+# logdf$keep_5_v=as.numeric(logdf$keep_5_v)
+# 
+# logdf$keep_60_pct=as.numeric(logdf$keep_60_pct)
+# logdf$keep_60_r=as.numeric(logdf$keep_60_r)
+# logdf$keep_60_v=as.numeric(logdf$keep_60_v)
+
+ggplot(logdf,aes(start_t,keep_60_pct))+geom_jitter()
+
+ 
+ 
+
+ggplot(logdf,aes(start_t,keep_60_v))+geom_jitter()
+ggplot(logdf,aes(start_t,keep_60_r))+geom_jitter()
+
+logdf$keep_5_pct=ifelse(logdf$keep_5_pct==999,NA,logdf$keep_5_pct)
+
+logdf$keep_5_r=ifelse(logdf$keep_5_r==999,NA,logdf$keep_5_r)
+
+logdf$keep_5_v=ifelse(logdf$keep_5_v==999,NA,logdf$keep_5_v)
+
+
+ggplot(logdf)+geom_jitter(aes(start_t,keep_5_pct))+geom_hline(yintercept=c(26),linetype=2,col="red")+geom_jitter(aes(start_t,-keep_5_r),col="blue")+geom_jitter(aes(start_t,-keep_5_v),col="red")
+
+ggplot(logdf,aes(start_t,keep_5_pct))+geom_jitter()
+
+ggplot(logdf,aes(start_t,keep_5_v))+geom_jitter()
+ggplot(logdf,aes(start_t,keep_5_r))+geom_jitter()
+
+logdf$date=as.Date(logdf$date)
+
+logdf %>% dplyr::filter(date>as.Date("2021-04-04"),keep_5_pct>26,keep_5_pct<27.1)%>%pull(keep_5_pct)%>%length()
+
+logdf %>% dplyr::filter(date>as.Date("2021-04-04"),keep_5_pct>26)%>%pull(keep_5_pct)%>%length()
+
+ 
+
+logdf$keep_5_pct
+
+#logdf$test_b[str_sub(logdf$test_e,1,3)!=str_sub(logdf$test_b,1,3)]
+ 
+
+```
+ 
+
+```{r echo=F,error=F,warning=F,message=F,fig.width=12,fig.height=6,eval=F}
+ 
+xml=dir("D:/2021/iseego/mp/2021",pattern=".xml",recursive=T,full.names=T)
+log=dir("D:/2021/iseego/mp/2021",pattern=".log",recursive=T,full.names=T)
+
+bu=str_extract(log,"BU[0-9A-Z]+") 
+
+imei=str_extract(str_extract(log,"[0-9]+_Firestorm"),"[0-9]+") 
+
+mm=data.frame(bu,imei)
+
+xx=na.omit(mm)
+ 
+
+
+n=length(xml)
+ 
+library("XML")
+library("methods")
+library(DT)
+
+xmldf=NULL
+for (i in 1:n){
+
+doc=xmlTreeParse(xml[i],useInternal=TRUE)
+rootnode=xmlRoot(doc) 
+
+sn=str_extract(xml[i],"[0-9A-Z]{14}_[0-9]{14}")
+time=ymd_hms(str_extract(xml[i],"2021[0-9]{10}"))
+ 
+Test_Item=xpathSApply(rootnode,"//Test_Item",xmlValue)
+Measure_Data=xpathSApply(rootnode,"//Measure_Data",xmlValue)
+Pass=xpathSApply(rootnode,"//Pass",xmlValue)
+Channel=xpathSApply(rootnode,"//Channel",xmlValue)
+Upper_Limit=xpathSApply(rootnode,"//Upper_Limit",xmlValue)
+Lower_Limit=xpathSApply(rootnode,"//Lower_Limit",xmlValue)
+Measure_Time=xpathSApply(rootnode,"//Measure_Time",xmlValue)
+
+guess=as.numeric(str_extract(Measure_Data[str_detect(Measure_Data,"%")],"[0-9.]+"))
+
+if (length(guess)==1) { l_pct_5=guess;l_pct_60=999} else {l_pct_5=guess[1];l_pct_60=guess[2]}
+ 
+#print(Test_Item[str_detect(Measure_Data,"%")])
+ 
+
+tmp=data.frame(time,sn,Test_Item,Measure_Data,Upper_Limit,Lower_Limit,Pass,Channel,Measure_Time,l_pct_5,l_pct_60)
+
+xmldf=rbind(xmldf,tmp)
+
+}
+
+
+ 
+
+
+xmldf$l_pct_60=ifelse(xmldf$l_pct_60==999,NA,xmldf$l_pct_60)
+
+ 
+
+ 
+ 
+ 
+
+#xmldf %>% datatable()
+
+ 
+xmldf$date=date(xmldf$Measure_Time)
+
+ 
+
+ 
+
+xmldf$Measure_Data=as.numeric(xmldf$Measure_Data)
+xmldf$Test_Item=as.factor(xmldf$Test_Item)
+xmldf$Channel=as.integer(xmldf$Channel)
+ 
+ 
+xmldf$sn=as.factor(xmldf$sn)
+ 
+
+ xmldf_all=xmldf
+ 
+#myt=unique(xmldf$date)
+ 
+ #xmldf=na.omit(xmldf_all)
+ 
+
+library(ggplot2)
+
+
+xmldf=xmldf %>% group_by(factor(date))  %>%mutate(p_n= ifelse(l_pct_5<=26&l_pct_60<2,length(unique(sn)),0)
+) 
+
+xmldf=xmldf %>% group_by(factor(date))%>%mutate(nn=length(unique(sn))) 
+xmldf=xmldf %>% group_by(factor(date))%>%mutate(t_n=length(unique(sn))) 
+ 
+ 
+xmldf=xmldf %>% group_by(factor(date))%>%mutate(p_n=length(unique(sn[l_pct_5<26&l_pct_60<2])))  
+ 
+
+
+ 
+
+
+xmldf$pn=paste0("passæ¬¡æ•¸","\n",xmldf$p_n)
+
+xmldf$nn=paste0("æ¸¬è©¦æ¬¡æ•¸","\n",xmldf$nn)
+
+xmldf$site=ifelse(xmldf$date>as.Date("2021-04-20"),"IATY","IACP")
+
+xmldf1=subset(xmldf,l_pct_5<=26 & l_pct_60<2)
+
+ggplot(xmldf,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_grid(~site+date+nn)+theme(legend.position = "none") 
+
+
+ggplot(xmldf1,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_grid(~site+date+pn)+theme(legend.position = "none")+labs(title="Pass è³‡æ??")
+
+
+
+ggplot(xmldf,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_grid(~site+date+nn)+theme(legend.position = "none")+ylim(c(-150,0))
+
+ggplot(xmldf1,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_grid(~site+date+pn)+theme(legend.position = "none")+ylim(c(-150,0))+labs(title="Pass è³‡æ??")
+
+
+
+
+#xmldf$date=as.factor(xmldf$date) 
+
+ggplot(xmldf,aes(factor(date),l_pct_5,col=factor(date)))+geom_boxplot()+geom_point()+labs(title="l_pct_5")+geom_hline(yintercept = c(26,27),linetype=2,col="red")
+
+
+ggplot(xmldf,aes(factor(date),l_pct_60,col=factor(date)))+geom_boxplot()+geom_point()+labs(title="l_pct_60")+geom_hline(yintercept = c(2,3),linetype=2,col="red")
+
+ 
+ 
+ xmldf %>% group_by(date,site,sn) %>% summarise(pct_5=mean(l_pct_5)) %>% select(date,sn,pct_5)
+  
+# xmldf %>% group_by(date,site,sn) %>% summarise(pct_60=mean(l_pct_60,na.rm=T))%>% select(date,sn,pct_60) %>% ggplot(aes(str_sub(date,6,10),pct_60 ,fill= site))+geom_boxplot()+geom_jitter(width=.2 )+geom_hline(yintercept=1.99,linetype=2,col="red")+ylim(c(0,10))+annotate("text",x=6,y=2.2,label="è¦æ ¼:1.99%")+labs(x="?—¥???",y="Leakage_Percentage_60s",title="Leakage_Percentage_60s æµ¦æ±_æ¡ƒå?’æ?”è??")
+ 
+ 
+ 
+bbb=(unique(str_sub(xmldf$sn[xmldf$date>as.Date("2021-05-02")],1,14)))  
+ 
+na.omit(str_extract(bbb,"BU[0-9A-Z]+"))%>%kable()
+
+ 
+ 
+# xmldf %>% group_by(date,site,sn) %>% summarise(pct_5=mean(l_pct_5,na.rm=T))%>% select(date,sn,pct_5) %>% ggplot(aes(str_sub(date,6,10),pct_5 ,fill= site))+geom_boxplot()+geom_jitter(width=.2 )+geom_hline(yintercept=26,linetype=2,col="red")+ylim(c(20,50))+annotate("text",x=1,y=27,label="è¦æ ¼:26%")+labs(x="?—¥???",y="Leakage_Percentage_5s",title="Leakage_Percentage_5s æµ¦æ±_æ¡ƒå?’æ?”è??")
+  
+
+ 
+#xmldf %>% dplyr::filter(site=="IACT",Test_Item=="Leakage_Percentage_5s",!is.na(Measure_Data))
+ 
+
+xml_k1s=xmldf %>% dplyr::filter(Test_Item=="Keep_Pressure_1s") 
+
+ 
+
+xml_k1s %>% group_by(site,date) %>% summarise(æ¸¬è©¦æ¬¡æ•¸=n(),å¹³å?‡Keep_Pressure_1s=mean(Measure_Data))%>%kable(digit=2) %>%  column_spec(2:3, width = "3cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+
+ggplot(xml_k1s,aes(date,Measure_Data))+geom_boxplot()+geom_jitter()+labs(title="Keep_Pressure_1s") 
+
+ggplot(xml_k1s,aes(date,Measure_Data))+geom_boxplot(aes(fill=site))+geom_jitter(width=.2)+labs(title="Keep_Pressure_1s")+ylim(c(-115,-85))
+
+
+
+xml_k60s=xmldf %>% dplyr::filter(Test_Item=="Keep_Pressure_60s") 
+
+
+ggplot(xml_k60s,aes(factor(date),Measure_Data))+geom_boxplot(aes(factor(date)))+geom_jitter(aes(col=factor(date)))+labs(title="Keep_Pressure_60s")
+
+
+
+xml_v1=xmldf %>% dplyr::filter(Test_Item=="Vacuum_Pressure_1") 
+
+
+xml_v1 %>% group_by(site,date) %>% summarise(æ¸¬è©¦æ¬¡æ•¸=n(),å¹³å?‡Vacuum_Pressure_1=mean(Measure_Data)) %>%kable(digit=2) %>%  column_spec(2:3, width = "3cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+
+
+ggplot(xml_v1,aes(date,Measure_Data))+geom_boxplot(aes(fill=site))+geom_jitter(width=.2)+labs(title="vacuum_pressure_1")+theme(legend.position="none")+ylim(c(-75,10))
+
+
+
+xml_v50=xmldf %>% dplyr::filter(Test_Item=="Vacuum_Pressure_50") 
+ 
+ ggplot(xml_v50,aes(factor(date),Measure_Data))+geom_boxplot(aes(fill=date))+geom_jitter(aes(col=date))+labs(title="vacuum_pressure_50")
+ 
+
+
+xmldf$date=as.Date(xmldf$date)
+
+ 
+
+ 
+
+xmldf1=subset(xmldf,l_pct_5<=26 & l_pct_60<2)
+
+  
+
+
+ggplot(subset(xmldf,date %in% c(as.Date("2021-02-25"),as.Date("2021-05-06"),as.Date("2021-05-07"),as.Date("2021-05-10"),as.Date("2021-05-11"),as.Date("2021-05-12"),as.Date("2021-05-13"),as.Date("2021-05-14"),as.Date("2021-05-17"))) ,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92,-50),linetype=2,col=c("black"))+ facet_grid(~site+date+nn)+theme(legend.position = "none") +annotate("text",x=20,y=-90,label="-92")+annotate("text",x=20,y=-100,label="-102")+annotate("text",x=20,y= -123 ,label= "-125" )+annotate("text",x=20,y= -133 ,label= "-135" )+annotate("text",x=20,y= -47 ,label= "-50" )+labs(title="IACP_IATY?€²è?Œæ?”è??")
+
+
+ggplot(subset(xmldf1,date %in% c(as.Date("2021-02-25"),as.Date("2021-05-06"),as.Date("2021-05-07"),as.Date("2021-05-10"),as.Date("2021-05-11"),as.Date("2021-05-12"),as.Date("2021-05-13"),as.Date("2021-05-14"),as.Date("2021-05-17"))) ,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92,-50),linetype=2,col=c("black"))+ facet_grid(~site+date+pn)+theme(legend.position = "none") +annotate("text",x=30,y=-90,label="-92")+annotate("text",x=30,y=-100,label="-102")+annotate("text",x=30,y= -123 ,label= "-125" )+annotate("text",x=30,y= -133 ,label= "-135" )+annotate("text",x=30,y= -47 ,label= "-50" )+labs(title="IACP_IATY?€²è?Œæ?”è?? ç§»é™¤fail?•¸???")
+
+
+ 
+
+
+ggplot(xmldf,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("black"))+ facet_grid(~site+date+nn)+theme(legend.position = "none")+ylim(c(-140,-120))+xlim(c(40,55))
+
+
+
+ggplot(xmldf,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_grid(~site+date+nn)+theme(legend.position = "none")+ylim(c(-140,-120))+xlim(c(40,55))
+
+library(ggthemes)
+
+ggplot(xmldf,aes(Channel,Measure_Data,group=time,col=site))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_wrap(~site+date,ncol=5)+theme(legend.position = "none")+ylim(c(-150,-50))+theme_bw()
+
+
+
+
+#ggplot(subset(xmldf,date==as.Date("2021-04-29")),aes(Channel,Measure_Data,group=time,col=sn))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+ facet_grid(~sn)+theme(legend.position = "none")+ylim(c(-150,-50))
+ 
+ 
+ 
+ #ggplot(xmldf,aes(Channel,Measure_Data,col=sn,group=time))+geom_line()+facet_wrap(~date,ncol=1) +theme(legend.position = "none")+ylim(c(0,-200))
+
+
+xmlpass=xmldf %>% dplyr::filter(Test_Item=="Leakage_Percentage_60s",date>=as.Date("2021-04-04"),l_pct_5<=26,l_pct_60<2)%>%pull(sn)%>% unique() %>% str_extract("BU[0-9A-Z]+")%>% na.omit()%>%unique()%>%sort()
+
+names(xmlpass)="xml pass sn"
+
+xmlpass %>%kable(caption = "xml pass sn",align="c")%>%
+  column_spec(1:1, width = "2cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+ 
+
+
+watersn=na.omit(str_extract(sort(unique(str_sub(xmldf$sn[xmldf$date>as.Date("2021-04-05)")],1,14))),"BU[0-9A-Z]+"))
+
+watersn %>%kable(caption = "xml test sn",align="c")%>%
+  column_spec(1:1, width = "2cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+
+
+
+ na.omit(str_extract(sort(unique(str_sub(logdf$sn[logdf$date>as.Date("2021-04-05)")],1,14))),"BU[0-9A-Z]+"))%>%sort()%>%kable(caption = "log test sn",align="c")%>%
+  column_spec(1:1, width = "2cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+
+ 
+ 
+ 
+logpass=logdf %>% dplyr::filter(date>as.Date("2021-04-05"),keep_60_pct<2,keep_5_pct<=26,test_b=="_ONLINE TEST START" ) %>% pull(sn)%>% unique() %>% str_extract("BU[0-9A-Z]+")%>% na.omit()%>%sort()
+
+logpass%>%kable(caption = "log pass sn",align="c")%>%
+  column_spec(1:1, width = "2cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+
+xmlpass[!(xmlpass %in% logpass)] %>%kable(caption = "xml å¤šå‡º pass sn",align="c")%>%
+  column_spec(1:1, width = "2cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20)
+ 
+
+
+waterlogsn=logdf %>% dplyr::filter(date>as.Date("2021-04-05")) %>% pull(sn)%>% unique() %>% str_extract("BU[0-9A-Z]+")%>% na.omit()
+
+
+unique(waterlogsn)%>%sort()%>%kable(caption = "log test sn",align="c")%>%
+  column_spec(1:1, width = "2cm")?€€%>%
+  kable_classic(full_width = F,c("striped","hover"),font_size=20) 
+
+#waterlogsn[!(waterlogsn %in% watersn)] %>% sort()%>%kable(caption = "log #å¤šå‡º test sn",align="c")%>%
+#  column_spec(1:1, width = "2cm")?€€%>%
+#  kable_classic(full_width = F,c("striped","hover"),font_size=20)
+
+
+
+
+
+```
+  
+
+
+
+```{r echo=F,error=F,warning=F,message=F,fig.width=11,fig.height=10,eval=F}
+
+ 
+myd=unique(xmldf$date)
+
+
+xmldf$sn=str_sub(xmldf$sn,1,14)
+
+for (i in myd){
+print(ggplot(subset(xmldf,date==i),aes(Channel,Measure_Data,group=time,col=sn))+geom_line()+geom_hline(yintercept=c(-135,-125,-102,-92),linetype=2,col=c("red"))+labs(title=i)+ facet_wrap(date~sn,ncol=10)+theme(legend.position = "none")+ylim(c(-150,-50)))}
+ 
+
+
+kable(table(unique(str_extract(xmldf$sn,"BU08[0-9A-Za-z]+"))))
+
+
+
+```
